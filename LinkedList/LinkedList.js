@@ -2,17 +2,22 @@ var cat;
 var lion;
 var tiger;
 var bear;
+var cats;
+var cheetah;
+var w = 200;
 var x = 0;
+
 function preload() {
   cat = loadImage("data/our-cat-shop-image.png");
   lion = loadImage("data/imgres.jpg");
   tiger = loadImage("data/siberian-tiger-profile.jpg");
   bear = loadImage("data/bears1.jpg");
+  cheetah = loadImage("data/cheetah.jpg");
 }
 
 function setup() {
 createCanvas(800, 800);
-var cats = new LList();
+cats = new LList();
 
 cats.insert(cat, "head");
 cats.insert(lion, cat);
@@ -26,8 +31,21 @@ cats.display();
 
 function draw() {
   //image(cat, 0, 0);
+  //cats.display();
 }
-
+function mouseClicked(){
+  if(mouseX>=(2*w)&&mouseX<=(3*w)){
+  cats.removeL(bear);
+  createCanvas(800, 800);
+  cats.display();
+  } else if(mouseX>3*w){
+  cats.insert(cheetah, tiger);
+  createCanvas(800, 800);
+  cats.display();
+  }
+  
+  
+}
 function Node(element) {
  this.element = element;
  this.next = null;
@@ -40,7 +58,7 @@ function LList() {
  this.display = display;
  this.findPrevious = findPrevious;
  this.removeL = removeL;
- image(cat);
+ //image(cat);
 }
 
 function find(item) {
@@ -66,10 +84,11 @@ function display() {
  //currNode = currNode.next;
  //}
  while (!(currNode.next === null)) {
- image(currNode.next.element, x, 0, 200, 200);
+ image(currNode.next.element, x, 0, w, 200);
  currNode = currNode.next;
  x+=200;
  }
+ x = 0;
 }
 
 function findPrevious(item) {
