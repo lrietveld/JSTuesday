@@ -26,19 +26,35 @@ cats.insert(tiger, bear);
 
 //cats.removeL(bear);
 cats.display();
+fill(240, 140, 30);
+rect(0,200,200,200);
+fill(0);
+textSize(16);
+text("Click to remove the noncat", 0, 300);
 
 }
 
 function draw() {
   //image(cat, 0, 0);
   //cats.display();
+  
 }
 function mouseClicked(){
-  if(mouseX>=(2*w)&&mouseX<=(3*w)){
+  if(mouseX>=(0)&&mouseX<=(200)&&mouseY>=200&&mouseY<400){
   cats.removeL(bear);
   createCanvas(800, 800);
   cats.display();
-  } else if(mouseX>3*w){
+  fill(240, 140, 30);
+  rect(200,200,200,200);
+  fill(0);
+  textSize(16);
+  text("Click to add a cat", 200, 300);
+  //}
+  //if(mouseX>=(2*w)&&mouseX<=(3*w)){
+  //cats.removeL(bear);
+  //createCanvas(800, 800);
+  //cats.display();
+  } else if(mouseX>200&&mouseX<400&&mouseY>200&&mouseY<400){
   cats.insert(cheetah, tiger);
   createCanvas(800, 800);
   cats.display();
